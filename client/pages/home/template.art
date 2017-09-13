@@ -1,0 +1,8 @@
+<ul>
+  {{each $data val key}}
+    <li>
+      <p><label>名字：</label>{{val.name}}</p>
+      <p><label>品种：</label>{{val.species}}</p>
+    </li>
+  {{/each}}
+</ul>

@@ -1,0 +1,16 @@
+{
+  "apps" : [
+    {
+      "name": "OT-UR",
+      "script"    : "../server.js",
+      "cwd": "./server/",
+      "watch": true,
+      "env_production" : {
+        "NODE_ENV": "production"
+      },
+      "env": {
+        "DEBUG": "express:application"
+      }
+    }
+  ]
+}

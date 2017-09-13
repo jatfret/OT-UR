@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>home page</title>
+  </head>
+  <body>
+    <div id="page-header"></div>
+    <div id="home-page-main">
+      <div id="home-page">
+      </div>
+    </div>
+    <div id="page-footer"></div>
+  </body>
+</html>
