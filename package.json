@@ -4,7 +4,6 @@
   "description": "a demo about ot.js applying to ur",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --env=dev --watch  --config ./client/config/webpack/webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,29 +12,15 @@
   "author": "luofan",
   "license": "MIT",
   "devDependencies": {
-    "art-template-loader": "^1.4.3",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
-    "css-loader": "^0.28.7",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^0.11.2",
-    "html-webpack-plugin": "^2.30.1",
-    "node-sass": "^4.5.3",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
-    "webpack": "^3.5.6",
-    "webpack-dev-server": "^2.7.1"
+    "body-parser": "^1.18.1"
   },
   "dependencies": {
-    "art-template": "^4.12.1",
     "codemirror": "^5.29.0",
     "errorhandler": "^1.5.0",
     "express": "^4.15.4",
-    "jquery": "^3.2.1",
-    "loadash": "^1.0.0",
+    "lodash": "^4.17.4",
     "moment": "^2.18.1",
+    "mongoose": "^4.11.11",
     "morgan": "^1.8.2",
     "mysql": "^2.14.1",
     "ot": "0.0.15",

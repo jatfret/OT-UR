@@ -14,7 +14,8 @@ router.get('/', (req, res)=>{
   res.send('api page')
 })
 
-router.get('/list', (req, res)=>{
+//获取列表
+router.get('/getList', (req, res)=>{
   pool.getConnection((err, connection)=>{
     if (err) {
     console.log(err);
@@ -29,6 +30,27 @@ router.get('/list', (req, res)=>{
     });
   });
 });
+
+//新增试卷
+router.post('/addPaper', (req, res)=>{
+
+});
+
+//删除试卷
+router.post('/deletePaper', (req, res)=>{
+
+});
+
+//新增题目
+router.post('/addTopic', (req, res)=>{
+
+});
+
+//删除题目
+router.post('/deleteTopic', (req, res)=>{
+
+});
+
 
 router.get('/detail', (req, res)=>{
   res.send(" api detail ");
