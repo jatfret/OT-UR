@@ -5,7 +5,7 @@ const routers = require('./routers');
 const mysql = require('mysql');
 const home = require('./routers/home.js');
 const api = require('./routers/api.js');
-const PaperModel = require('./models/mongo/paperModel.js');
+const PaperModel = require('./models/mongo/PaperModel.js');
 
 const app = express();
 const server = require('http').Server(app);
