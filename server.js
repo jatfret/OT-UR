@@ -26,6 +26,10 @@ app.all('*',function (req, res, next) {
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.get('/', (req, res)=>{
+  res.sendFile('./public/index.html');
+});
 app.use(routers);
 
 io.on('connection', function (socket) {

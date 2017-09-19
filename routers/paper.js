@@ -1,5 +1,5 @@
 const express = require('express');
-require('../models/mongo/connet.js');
+require('../models/mongo/connect.js');
 const PaperModel = require('../models/mongo/paperModel.js');
 const router = express.Router();
 
