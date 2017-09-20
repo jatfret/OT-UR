@@ -1,4 +1,5 @@
 const express = require('express');
+const moment = require('moment');
 require('../models/mongo/connect.js');
 const PaperModel = require('../models/mongo/PaperModel.js');
 const router = express.Router();
@@ -10,7 +11,7 @@ router.post("/createPaper", (req, res)=>{
     title: " ",
     description: " ",
     topics: [],
-    created_at: new Date().getTime()
+    created_at: new Date()
   });
   paper.save((err, result)=>{
     if(err){
