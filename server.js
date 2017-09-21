@@ -17,17 +17,17 @@ server.listen(3000, (req, res)=>{
   console.log('server is listening on port 3000!');
 });
 
-app.use(express.static('public'));
-
-app.all('*',function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length');
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-    next();
-});
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static('public'));
+
+app.all('*',function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length');
+  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+  next();
+});
 
 app.get('/', (req, res)=>{
   res.sendFile('./public/index.html');
@@ -35,16 +35,19 @@ app.get('/', (req, res)=>{
 app.use(routers);
 
 let onlineUsers = 0;
+let userList = {};
+let username;
 
 io.on('connection', function (socket) {
-  socket.name = `用户${++onlineUsers}`;
-  io.emit('pushMessage', {message: `${socket.name}加入编辑`});
-  socket.on('disconnect', function(msg) {
-    io.emit('pushMessage', { message: `${socket.name}退出编辑` });
-    onlineUsers--;
-  });
-  socket.on('forceDisconnect', function(){
+  const username = `用户${++onlineUsers}`;
+  io.emit('pushMessage', { onlineUsers, message: `${username}加入编辑`});
+  socket.on('forceDisconnect', function(msg){
+    socket.broadcast.emit('pushMessage', { onlineUsers: onlineUsers - 1, message: `${msg.username}退出编辑` });
     socket.disconnect();
+  })
+  socket.on('disconnect', function(res){
+    onlineUsers--;
+    delete userList[socket.id]
   })
   socket.on('updatePaper', function(msg){
     console.log(msg);
@@ -57,7 +60,7 @@ io.on('connection', function (socket) {
           }
         }
         io.emit('updateSuccess', message)
-        io.emit('pushMessage', { message: `${user}提交更新` });
+        io.emit('pushMessage', { message: `${username}提交更新` });
       } else {
         const message = {
           data: {
@@ -67,10 +70,9 @@ io.on('connection', function (socket) {
           }
         }
         io.emit('updateSuccess', message)
-        io.emit('pushMessage', { message: `${user}提交更新` });
+        io.emit('pushMessage', { message: `${username}提交更新` });
       }
     })
-
   })
 });
 
