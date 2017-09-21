@@ -37,12 +37,15 @@ app.use(routers);
 let onlineUsers = 0;
 
 io.on('connection', function (socket) {
-  const user = `用户${++onlineUsers}`;
-  io.emit('pushMessage', {message: `${user}加入编辑`});
+  socket.name = `用户${++onlineUsers}`;
+  io.emit('pushMessage', {message: `${socket.name}加入编辑`});
   socket.on('disconnect', function(msg) {
-    io.emit('pushMessage', { message: `${user}退出编辑` });
+    io.emit('pushMessage', { message: `${socket.name}退出编辑` });
     onlineUsers--;
   });
+  socket.on('forceDisconnect', function(){
+    socket.disconnect();
+  })
   socket.on('updatePaper', function(msg){
     console.log(msg);
     PaperModel.findById(msg.id,  (err, result)=>{
