@@ -12,7 +12,8 @@
   "author": "luofan",
   "license": "MIT",
   "devDependencies": {
-    "body-parser": "^1.18.1"
+    "body-parser": "^1.18.1",
+    "cookie-parser": "^1.4.3"
   },
   "dependencies": {
     "codemirror": "^5.29.0",

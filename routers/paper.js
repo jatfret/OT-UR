@@ -55,7 +55,7 @@ router.get("/getPaperList", (req, res)=>{
 
 //查询试卷
 router.get("/getPaper", (req, res)=>{
-  PaperModel.findById(req.query.id,  (err, result)=>{
+    PaperModel.findById(req.query.id,  (err, result)=>{
     if(err){
       const message = {
         data: {
@@ -74,7 +74,7 @@ router.get("/getPaper", (req, res)=>{
       }
       res.json(message);
     }
-  })
+})
 });
 
 //更新试卷
