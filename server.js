@@ -42,7 +42,7 @@ io.on('connection', function (socket) {
   const username = `用户${++onlineUsers}`;
   io.emit('pushMessage', { onlineUsers, message: `${username}加入编辑`});
   socket.on('forceDisconnect', function(msg){
-    socket.broadcast.emit('pushMessage', { onlineUsers: onlineUsers - 1, message: `${msg.username}退出编辑` });
+    socket.broadcast.emit('pushMessage', { onlineUsers: onlineUsers - 1, message: `${username}退出编辑` });
     socket.disconnect();
   })
   socket.on('disconnect', function(res){
