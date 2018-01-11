@@ -57,24 +57,24 @@ router.get("/getPaperList", (req, res)=>{
 //查询试卷
 router.get("/getPaper", (req, res)=>{
     PaperModel.findById(req.query.id,  (err, result)=>{
-    if(err){
-      const message = {
-        data: {
-          info: err,
-          status: 0
-        }
-      }
-      res.json(message);
-    } else {
-      const message = {
-        data: {
-          paper: result,
-          info: 'success',
-          status: 1
-        }
-      }
-      res.json(message);
-    }
+	    if(err){
+	      const message = {
+		data: {
+		  info: err,
+		  status: 0
+		}
+	      }
+	      res.json(message);
+	    } else {
+	      const message = {
+		data: {
+		  paper: result,
+		  info: 'success',
+		  status: 1
+		}
+	      }
+	      res.json(message);
+	    }
 })
 });
 
